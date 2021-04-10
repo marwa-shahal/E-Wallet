@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import img from "../assests/Finance.jpg";
+import img from "../assests/Finance.png";
 
 const About = () => {
   return (
