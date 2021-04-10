@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import './App.css'
+import Header from "./components/Header";
+import WalletForm from "./components/WalletForm";
+import NOWallet from "./components/NOWallet";
+import WalletComponent from "./components/WalletComponent";
+import About from "./components/About";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
+import { StateContext } from "./State";
 
-function App() {
+export default function App() {
+  const [state] = useContext(StateContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <div className="App">
+          <div className="custRow">
+            <div className="asideMenu">
+              <Header />
+            </div>
+            <div className="content">
+              <Route path="/" exact>
+                <NOWallet />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/walletform">
+                <WalletForm />
+              </Route>
+              <Route path="/wallet/:name">
+                {state.wallets.length === 0 ? (
+                  <Redirect to="/" />
+                ) : (
+                  <WalletComponent />
+                )}
+              </Route>
+            </div>
+          </div>
+        </div>
+      </Switch>
+    </Router>
   );
 }
-
-export default App;
