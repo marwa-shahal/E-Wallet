@@ -9,8 +9,11 @@ This project is currently in development. Users may create and manage their wall
 
 Project Screen Shot(s)
 
+Home Page 
 ![Home page screen](./src/assests/homepage.jpg)
 
+
+Wallet Page 
 ![Wallet page screen](./src/assests/walletpage.jpg)
 
 
